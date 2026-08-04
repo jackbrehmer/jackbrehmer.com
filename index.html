@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jack Brehmer</title>
+<meta name="description" content="Finance at CU Boulder. I build onchain credit products and the tooling that finds the trade.">
+
+<meta property="og:title" content="Jack Brehmer">
+<meta property="og:description" content="Finance at CU Boulder. I build onchain credit products and the tooling that finds the trade.">
+<meta property="og:url" content="https://jackbrehmer.com">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper:  #F1F0EC;
+    --ink:    #16181C;
+    --slate:  #676C74;
+    --rule:   #D9D7D1;
+    --accent: #1F44CC;
+
+    --display: "Space Grotesk", system-ui, sans-serif;
+    --body:    "Newsreader", Georgia, serif;
+    --mono:    "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 19px;
+    line-height: 1.58;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero { padding: 112px 0 88px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin: 0 0 28px;
+  }
+
+  .thesis {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: clamp(30px, 5.2vw, 52px);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    margin: 0 0 36px;
+    max-width: 20ch;
+  }
+
+  .thesis em {
+    font-style: normal;
+    box-shadow: inset 0 -0.09em 0 var(--accent);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  .links a {
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 140ms ease, color 140ms ease;
+  }
+
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- sections ---------- */
+
+  .row {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 44px;
+    padding: 56px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .row-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+    padding-top: 6px;
+  }
+
+  .row-body > *:first-child { margin-top: 0; }
+  .row-body > *:last-child  { margin-bottom: 0; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    margin: 0 0 4px;
+  }
+
+  .kicker {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--slate);
+    margin: 0 0 20px;
+  }
+
+  p { margin: 0 0 18px; max-width: 62ch; }
+
+  /* ---------- signature: the position strip ---------- */
+
+  .strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin: 0 0 22px;
+    background: rgba(255,255,255,0.42);
+  }
+
+  .strip div {
+    flex: 1 1 132px;
+    padding: 11px 14px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .strip div:last-child { border-right: 0; }
+
+  .strip dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin: 0 0 5px;
+  }
+
+  .strip dd {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .stack {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--slate);
+    margin: 0 0 18px;
+  }
+
+  ul { margin: 0 0 18px; padding-left: 20px; max-width: 62ch; }
+  li { margin-bottom: 9px; }
+
+  .also {
+    list-style: none;
+    padding: 0;
+    font-size: 17px;
+  }
+
+  .also li {
+    padding-left: 18px;
+    position: relative;
+    color: var(--slate);
+  }
+
+  .also li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 7px;
+    height: 1px;
+    background: var(--slate);
+  }
+
+  .also strong { color: var(--ink); font-weight: 500; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 44px 0 72px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--slate);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  footer a { border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+  footer a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- motion ---------- */
+
+  .lift {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: lift 620ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  .lift:nth-child(1) { animation-delay:  60ms; }
+  .lift:nth-child(2) { animation-delay: 150ms; }
+  .lift:nth-child(3) { animation-delay: 240ms; }
+
+  @keyframes lift {
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lift { animation: none; opacity: 1; transform: none; }
+    * { transition: none !important; }
+  }
+
+  /* ---------- mobile ---------- */
+
+  @media (max-width: 680px) {
+    body { font-size: 18px; }
+    .wrap { padding: 0 22px; }
+    .hero { padding: 72px 0 56px; }
+    .row {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 44px 0;
+    }
+    .row-label { padding-top: 0; }
+    .strip div { flex: 1 1 100%; border-right: 0; border-bottom: 1px solid var(--rule); }
+    .strip div:last-child { border-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow lift">Jack Brehmer &nbsp;/&nbsp; Boulder, Colorado</p>
+    <h1 class="thesis lift">I find the opportunity, then build the <em>system that makes it repeatable</em>.</h1>
+    <nav class="links lift">
+      <a href="mailto:jack@jackbrehmer.com">jack@jackbrehmer.com</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">X</a>
+      <a href="#">Resume</a>
+    </nav>
+  </section>
+
+  <section class="row">
+    <div class="row-label">Operated</div>
+    <div class="row-body">
+      <h2>CU Blockchain Club</h2>
+      <p class="kicker">Co-President. Two arms: technical and non-technical.</p>
+
+      <dl class="strip">
+        <div><dt>Members</dt><dd>8 &rarr; 25</dd></div>
+        <div><dt>ETH Denver</dt><dd>580+ attendees</dd></div>
+        <div><dt>Penn Conference</dt><dd>18 members flown</dd></div>
+      </dl>
+
+      <p>The ETH Denver mixer was the largest student-run side event at the conference. Getting there meant sponsors, venue, and programming, all of it sourced by students with no budget to start from.</p>
+      <p>At Rare Evo I represented CU at College Row alongside 16 students from 8 other schools, which is where the Lintel team came together.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="row-label">Automated</div>
+    <div class="row-body">
+      <h2>Decision tooling</h2>
+      <p class="kicker">Market Intelligence Analyst, Ammortal. Wellness hardware, ~$160K unit, sold into pro sports and luxury hospitality.</p>
+
+      <p class="stack">Python &middot; Claude API &middot; NewsAPI &middot; DefiLlama &middot; Google Sheets &middot; OpenCV</p>
+
+      <ul>
+        <li><strong>run_intel.py</strong> — a Monday-morning pipeline that scans for facility construction and personnel hires in target accounts, then writes scored signals into the sheet the sales team already opens. The output is a call list, not a report nobody reads.</li>
+        <li><strong>Summit 2026 brief</strong> — a self-contained HTML networking doc with embedded headshots, attendee tiers, and filterable tags. Face detection in OpenCV to crop several hundred photos without doing it by hand.</li>
+        <li><strong>raise_skimmer.py</strong> — built for myself. Surfaces recently funded crypto and AI startups and resolves founders' X handles, so outreach starts from a fresh cap table event.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="row-label">Argued</div>
+    <div class="row-body">
+      <h2>Short ZKsync</h2>
+      <p class="kicker">Penn Blockchain researchathon. Valuation work on Artemis data.</p>
+      <p>A thesis on the gap between fully diluted valuation and realized network economics, built from on-chain revenue and activity data rather than narrative. Written to be defended against someone who disagreed, which is the only useful test of a view.</p>
+      <p><a href="#" style="border-bottom:1px solid var(--rule);padding-bottom:2px;">Read the thesis</a></p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="row-label">Pitched</div>
+    <div class="row-body">
+      <h2>Lintel</h2>
+      <p class="kicker">Real-estate bridge lending fund on the XRP Ledger. XRPL hackathon at Rare Evo. I built the interface and presented to the judges. Tyler Martin built the ledger side.</p>
+
+      <p>The fund takes deposits into an XLS-65 vault, underwrites bridge loans off-chain, and originates them on-chain via XLS-66. Manager first-loss capital absorbs defaults before depositors are impaired, and NAV per share updates on every event.</p>
+
+      <p>My job was making that legible in five minutes to judges who had already seen forty projects. Most of the work was deciding what to cut. The waterfall and the mark-to-NAV mechanic earned screen time; the token standards did not.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="row-label">Also</div>
+    <div class="row-body">
+      <ul class="also">
+        <li><strong>Mint AI / PersistAgent</strong> — hackathon frontend targeting x402 and Filecoin bounties.</li>
+        <li><strong>Commons Network</strong> — go-to-market and press outreach.</li>
+        <li><strong>Cal AI</strong> — student calendar app. React/Vite, Node, Google Calendar and Canvas APIs.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="row-label">Now</div>
+    <div class="row-body">
+      <p>Finance at the Leeds School of Business, CU Boulder. Sourcing real company projects for club members to execute this fall, which is the part of the job I like most: finding work worth doing and matching it to people who will finish it.</p>
+      <p>Reachable at <a href="mailto:jack@jackbrehmer.com" style="border-bottom:1px solid var(--rule);padding-bottom:2px;">jack@jackbrehmer.com</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>Jack Brehmer</span>
+  <span><a href="mailto:jack@jackbrehmer.com">jack@jackbrehmer.com</a></span>
+</footer>
+
+</body>
+</html>
